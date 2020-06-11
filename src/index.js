@@ -2,6 +2,11 @@ import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import Boom from '@hapi/boom'
 import { Provider } from 'react-redux'
+import debug from 'debug'
+
+const log = debug('@sequencemedia/react-redux-render')
+
+log('`react-redux-render` is awake')
 
 const badImplementation = (e, data) => Boom.boomify(e, { statusCode: 500, message: 'Rendering exception', data })
 
@@ -15,6 +20,8 @@ const getReactDOMServerRenderToString = (store, Component, props) => {
       </Provider>
     )
   } catch (e) {
+    log(e)
+
     throw badImplementation(e, { props })
   }
 }
@@ -29,6 +36,8 @@ const getReactDOMServerRenderToStaticMarkup = (store, Component, props) => {
       </Provider>
     )
   } catch (e) {
+    log(e)
+
     throw badImplementation(e, { props })
   }
 }
