@@ -52,7 +52,7 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.1",
     "core-js": "^3.6.5",
-    "eslint": "^7.12.0",
+    "eslint": "^7.12.1",
     "eslint-config-standard": "^15.0.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
@@ -62,7 +62,7 @@
     "husky": "^4.3.0",
     "react": "16.14.0",
     "react-dom": "16.14.0",
-    "react-redux": "^7.2.1",
+    "react-redux": "^7.2.2",
     "redux": "^4.0.5",
     "rimraf": "^3.0.2"
   },
