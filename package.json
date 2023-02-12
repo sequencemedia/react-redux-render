@@ -1,6 +1,6 @@
 {
   "name": "@sequencemedia/react-redux-render",
-  "version": "2.0.333",
+  "version": "2.0.334",
   "description": "React Render",
   "keywords": [
     "React",
@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.20.13",
-    "@hapi/boom": "^10.0.0",
+    "@hapi/boom": "^10.0.1",
     "debug": "^4.3.4"
   },
   "devDependencies": {
