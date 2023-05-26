@@ -1,3 +1,7 @@
+/**
+ * @typedef {import('redux').Store} Store
+ */
+
 import debug from 'debug'
 
 import {
@@ -10,7 +14,7 @@ const log = debug('@sequencemedia/react-redux-render')
 log('`react-redux-render` is awake')
 
 /**
- * @param {Object.<string, any>} store
+ * @param {Store} store
  * @param {React.ReactElement} Component
  * @param {Object.<string, any>} props
  * @returns {string}
@@ -18,7 +22,7 @@ log('`react-redux-render` is awake')
 export const renderToString = (store, Component, props = {}) => getReactDOMServerRenderToString(store, Component, props)
 
 /**
- * @param {Object.<string, any>} store
+ * @param {Store} store
  * @param {React.ReactElement} Component
  * @param {Object.<string, any>} props
  * @returns {string}
@@ -26,7 +30,7 @@ export const renderToString = (store, Component, props = {}) => getReactDOMServe
 export const renderToStaticMarkup = (store, Component, props = {}) => getReactDOMServerRenderToStaticMarkup(store, Component, props)
 
 /**
- * @param {Object.<string, any>} store
+ * @param {Store} store
  * @param {React.ReactElement} Component
  * @param {Object.<string, any>} props
  * @returns {Promise<string>}
