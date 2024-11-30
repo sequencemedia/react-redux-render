@@ -5,8 +5,10 @@
 import debug from 'debug'
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
+import {
+  Provider
+} from 'react-redux'
 import Boom from '@hapi/boom'
-import { Provider } from 'react-redux'
 
 const log = debug('@sequencemedia/react-redux-render')
 
