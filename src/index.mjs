@@ -1,5 +1,7 @@
 /**
- * @typedef {import('redux').Store} Store
+ *  @typedef {import('redux').Store} Store
+ *  @typedef {ReactReduxRenderTypes.ComponentType} ComponentType
+ *  @typedef {ReactReduxRenderTypes.PropsType} PropsType
  */
 
 import debug from 'debug'
@@ -14,25 +16,37 @@ const log = debug('@sequencemedia/react-redux-render')
 log('`react-redux-render` is awake')
 
 /**
- * @param {Store} store
- * @param {React.ReactElement} Component
- * @param {Object.<string, any>} props
- * @returns {string}
+ *  @param {Store} store
+ *  @param {ComponentType} Component
+ *  @param {PropsType} props
+ *  @returns {string}
  */
-export const renderToString = (store, Component, props = {}) => getReactDOMServerRenderToString(store, Component, props)
+export function renderToString (store, Component, props = {}) {
+  return (
+    getReactDOMServerRenderToString(store, Component, props)
+  )
+}
 
 /**
- * @param {Store} store
- * @param {React.ReactElement} Component
- * @param {Object.<string, any>} props
- * @returns {string}
+ *  @param {Store} store
+ *  @param {ComponentType} Component
+ *  @param {PropsType} props
+ *  @returns {string}
  */
-export const renderToStaticMarkup = (store, Component, props = {}) => getReactDOMServerRenderToStaticMarkup(store, Component, props)
+export function renderToStaticMarkup (store, Component, props = {}) {
+  return (
+    getReactDOMServerRenderToStaticMarkup(store, Component, props)
+  )
+}
 
 /**
- * @param {Store} store
- * @param {React.ReactElement} Component
- * @param {Object.<string, any>} props
- * @returns {Promise<string>}
+ *  @param {Store} store
+ *  @param {ComponentType} Component
+ *  @param {PropsType} props
+ *  @returns {string}
  */
-export const render = async (store, Component, props = {}) => getReactDOMServerRenderToString(store, Component, props)
+export function render (store, Component, props = {}) {
+  return (
+    getReactDOMServerRenderToString(store, Component, props)
+  )
+}

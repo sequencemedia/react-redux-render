@@ -1,5 +1,15 @@
 /**
- * @typedef {import('redux').Store} Store
+ *  @typedef {import('redux').Store} Store
+ *  @typedef {ReactReduxRenderTypes.ComponentType} ComponentType
+ *  @typedef {ReactReduxRenderTypes.PropsType} PropsType
+ *
+ *  @typedef {{
+ *    props: PropsType
+ *  }} PropsException
+ *
+ *  @typedef {{
+ *    e: unknown
+ *  }} Exception
  */
 
 import debug from 'debug'
@@ -15,17 +25,21 @@ const log = debug('@sequencemedia/react-redux-render')
 log('`react-redux-render` is awake')
 
 /**
- * @param {Error} e
- * @param {{props: Object.<string, any>}} data
- * @returns A boom object
+ *  @param {Error} e
+ *  @param {PropsException | Exception} data
+ *  @returns A boom object
  */
-const badImplementation = (e, data) => Boom.boomify(e, { statusCode: 500, message: 'Rendering exception', data })
+function badImplementation (e, data) {
+  return (
+    Boom.boomify(e, { statusCode: 500, message: 'Rendering exception', data })
+  )
+}
 
 /**
- * @param {Store} store
- * @param {React.ReactElement} Component
- * @param {Object.<string, any>} props
- * @returns {string}
+ *  @param {Store} store
+ *  @param {ComponentType} Component
+ *  @param {PropsType} props
+ *  @returns {string}
  */
 export function getReactDOMServerRenderToString (store, Component, props) {
   try {
@@ -37,17 +51,16 @@ export function getReactDOMServerRenderToString (store, Component, props) {
       </Provider>
     )
   } catch (e) {
-    log(e)
-
-    throw badImplementation(e, { props })
+    if (e instanceof Error) throw badImplementation(e, { props })
+    throw badImplementation(new Error('Exception'), { e })
   }
 }
 
 /**
- * @param {Store} store
- * @param {React.ReactElement} Component
- * @param {Object.<string, any>} props
- * @returns {string}
+ *  @param {Store} store
+ *  @param {ComponentType} Component
+ *  @param {PropsType} props
+ *  @returns {string}
  */
 export function getReactDOMServerRenderToStaticMarkup (store, Component, props) {
   try {
@@ -59,8 +72,7 @@ export function getReactDOMServerRenderToStaticMarkup (store, Component, props) 
       </Provider>
     )
   } catch (e) {
-    log(e)
-
-    throw badImplementation(e, { props })
+    if (e instanceof Error) throw badImplementation(e, { props })
+    throw badImplementation(new Error('Exception'), { e })
   }
 }
